@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Database
+*.db
+*.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Documentation (contient des infos sensibles/spécifiques au projet)
+SECURITE.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/

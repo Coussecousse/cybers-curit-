@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification 2FA</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>Vérification en deux étapes</h1>
+            <p class="text-center">Entrez le code à 6 chiffres généré par votre application d'authentification ou un code de secours.</p>
+            
+            <% if (error) { %>
+                <div class="alert alert-error"><%= error %></div>
+            <% } %>
+            
+            <form action="/verify-2fa" method="POST">
+                <div class="form-group">
+                    <label for="code">Code de vérification</label>
+                    <input type="text" id="code" name="code" required 
+                           pattern="[0-9A-Za-z]{6,20}" 
+                           maxlength="20"
+                           placeholder="000000"
+                           autocomplete="off">
+                    <small>Code à 6 chiffres ou code de secours (20 caractères)</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Vérifier</button>
+            </form>
+            
+            <p class="text-center">
+                <a href="/logout" class="link-secondary">Se déconnecter</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

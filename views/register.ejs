@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>Inscription</h1>
+            
+            <% if (error) { %>
+                <div class="alert alert-error"><%= error %></div>
+            <% } %>
+            
+            <form action="/register" method="POST" id="registerForm">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required 
+                           minlength="3" maxlength="30"
+                           pattern="[a-zA-Z0-9_-]+"
+                           title="3-30 caractères : lettres, chiffres, tirets et underscores uniquement">
+                    <small>3-30 caractères : lettres, chiffres, - et _</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required maxlength="100"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           title="Veuillez entrer une adresse email valide">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required 
+                           minlength="8" maxlength="128"
+                           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}"
+                           title="8+ caractères avec majuscule, minuscule, chiffre et caractère spécial">
+                    <small>Au moins 8 caractères avec majuscule, minuscule, chiffre et caractère spécial (@$!%*?&#)</small>
+                    <div id="password-strength" style="margin-top: 5px; font-size: 0.85rem;"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required 
+                           minlength="8" maxlength="128">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+            
+            <script>
+                const form = document.getElementById('registerForm');
+                const password = document.getElementById('password');
+                const confirmPassword = document.getElementById('confirmPassword');
+                const strengthDiv = document.getElementById('password-strength');
+                
+                // Indicateur de force du mot de passe
+                password.addEventListener('input', function() {
+                    const val = this.value;
+                    let strength = 0;
+                    let text = '';
+                    let color = '';
+                    
+                    if (val.length >= 8) strength++;
+                    if (val.length >= 12) strength++;
+                    if (/[a-z]/.test(val) && /[A-Z]/.test(val)) strength++;
+                    if (/\d/.test(val)) strength++;
+                    if (/[@$!%*?&#]/.test(val)) strength++;
+                    
+                    if (val.length === 0) {
+                        strengthDiv.textContent = '';
+                    } else if (strength <= 2) {
+                        text = '🔴 Faible';
+                        color = '#e74c3c';
+                    } else if (strength <= 3) {
+                        text = '🟡 Moyen';
+                        color = '#f39c12';
+                    } else if (strength <= 4) {
+                        text = '🟢 Bon';
+                        color = '#27ae60';
+                    } else {
+                        text = '🟢 Excellent';
+                        color = '#27ae60';
+                    }
+                    
+                    strengthDiv.textContent = text;
+                    strengthDiv.style.color = color;
+                });
+                
+                // Validation lors de la soumission
+                form.addEventListener('submit', function(e) {
+                    const pwd = password.value;
+                    const confirmPwd = confirmPassword.value;
+                    
+                    if (pwd !== confirmPwd) {
+                        e.preventDefault();
+                        alert('Les mots de passe ne correspondent pas');
+                        return false;
+                    }
+                    
+                    // Vérifications supplémentaires
+                    if (pwd.length < 8) {
+                        e.preventDefault();
+                        alert('Le mot de passe doit contenir au moins 8 caractères');
+                        return false;
+                    }
+                    
+                    if (!/[a-z]/.test(pwd) || !/[A-Z]/.test(pwd)) {
+                        e.preventDefault();
+                        alert('Le mot de passe doit contenir des minuscules et des majuscules');
+                        return false;
+                    }
+                    
+                    if (!/\d/.test(pwd)) {
+                        e.preventDefault();
+                        alert('Le mot de passe doit contenir au moins un chiffre');
+                        return false;
+                    }
+                    
+                    if (!/[@$!%*?&#]/.test(pwd)) {
+                        e.preventDefault();
+                        alert('Le mot de passe doit contenir au moins un caractère spécial (@$!%*?&#)');
+                        return false;
+                    }
+                });
+            </script>
+            
+            <p class="text-center">
+                Vous avez déjà un compte ? <a href="/login">Se connecter</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

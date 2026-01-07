@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2>MonApplication</h2>
+            <div class="nav-links">
+                <a href="/dashboard" class="active">Tableau de bord</a>
+                <a href="/profile">Profil</a>
+                <a href="/logout" class="btn-logout">Déconnexion</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="content-box">
+            <h1>Bienvenue, <%= user.username %> !</h1>
+            
+            <div class="info-card">
+                <h3>Informations du compte</h3>
+                <p><strong>Email :</strong> <%= user.email %></p>
+                <p><strong>Statut 2FA :</strong> 
+                    <% if (user.two_factor_enabled) { %>
+                        <span class="badge badge-success">Activé ✓</span>
+                    <% } else { %>
+                        <span class="badge badge-warning">Désactivé</span>
+                    <% } %>
+                </p>
+            </div>
+            
+            <% if (!user.two_factor_enabled) { %>
+                <div class="alert alert-warning">
+                    <strong>Sécurité :</strong> Activez la double authentification pour sécuriser votre compte.
+                    <a href="/profile" class="btn btn-sm">Activer maintenant</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container h2 {
+    color: #667eea;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: #f0f0f0;
+}
+
+.nav-links a.active {
+    background: #667eea;
+    color: white;
+}
+
+.btn-logout {
+    background: #ff4757 !important;
+    color: white !important;
+}
+
+.btn-logout:hover {
+    background: #ff3838 !important;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Auth Box */
+.auth-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 450px;
+    margin: 5rem auto;
+}
+
+.auth-box h1 {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* Content Box */
+.content-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.content-box h1 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.25rem;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* OTP Input */
+.otp-input {
+    text-align: center;
+    font-size: 1.5rem !important;
+    letter-spacing: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.btn-success {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #27ae60;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+/* Info Cards */
+.info-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.info-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.info-card p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.info-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* QR Code Section */
+.qr-code-section {
+    background: #f0f4ff;
+    border: 2px solid #667eea;
+}
+
+.steps {
+    margin-top: 1rem;
+}
+
+.step {
+    margin-bottom: 2rem;
+}
+
+.step h4 {
+    color: #667eea;
+    margin-bottom: 0.75rem;
+}
+
+.qr-code-container {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border: 2px dashed #667eea;
+}
+
+.qr-code-container img {
+    max-width: 250px;
+    height: auto;
+}
+
+/* Backup Codes */
+.backup-codes-section {
+    background: #fff8dc;
+    border: 2px solid #ffa502;
+}
+
+.backup-codes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.backup-code {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.code-number {
+    color: #888;
+    font-weight: bold;
+}
+
+.backup-code code {
+    font-size: 1.1rem;
+    color: #333;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.backup-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Text utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #888;
+}
+
+.text-success {
+    color: #2ecc71;
+}
+
+.text-center a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+.link-secondary {
+    color: #95a5a6 !important;
+}
+
+/* Code elements */
+code {
+    background: #f4f4f4;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+}
+
+/* Print styles for backup codes */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .navbar,
+    .info-card:not(.backup-codes-section),
+    .btn,
+    .backup-actions {
+        display: none;
+    }
+    
+    .backup-codes-section {
+        border: 2px solid black;
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-box {
+        padding: 2rem;
+        margin: 2rem auto;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .backup-codes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .backup-actions {
+        flex-direction: column;
+    }
+    
+    .backup-actions .btn {
+        width: 100%;
+    }
+}
